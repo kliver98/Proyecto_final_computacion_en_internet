@@ -19,6 +19,9 @@ public class TsscStoryServiceImpl implements TsscStoryService {
 	public TsscStory saveStory(TsscStory story, Iterable<TsscGame> games) {
 		if (story==null || story.getTsscGame()==null)
 			throw new NullPointerException("Neither story or game of story is null");
+		BigDecimal bValue = story.getBusinessValue(), iSprint = story.getInitialSprint(), priority = story.getPriority();
+		if (bValue.compareTo(BigDecimal.ZERO)<1 || iSprint.compareTo(BigDecimal.ZERO)<1 || priority.compareTo(BigDecimal.ZERO)<1)
+			throw new RuntimeException("There's an error in minimum number of bussinesValue and/or initialSprint and/or priority");
 		TsscGame game = story.getTsscGame();
 		long id = game.getId();
 		for (TsscGame item : games) {

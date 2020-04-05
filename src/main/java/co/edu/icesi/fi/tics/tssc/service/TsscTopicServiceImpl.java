@@ -14,9 +14,9 @@ public class TsscTopicServiceImpl implements TsscTopicService {
 	
 	@Override
 	public TsscTopic saveTopic(TsscTopic topic) {
-		long springs = topic.getDefaultSprints(), groups = topic.getDefaultSprints();
+		long springs = topic.getDefaultSprints(), groups = topic.getDefaultGroups();
 		if (springs<1 || groups<1)
-			new RuntimeException("There's an error in minimum number of Springs and/or Groups");
+			throw new RuntimeException("There's an error in minimum number of Springs and/or Groups");
 		tsscTopicRepository.save(topic);
 		return tsscTopicRepository.findById(topic.getId()).get();
 	}
