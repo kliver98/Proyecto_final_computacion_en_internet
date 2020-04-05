@@ -18,7 +18,7 @@ import co.edu.icesi.fi.tics.tssc.service.TsscGameService;
 import co.edu.icesi.fi.tics.tssc.service.TsscTopicService;
 
 @SpringBootTest
-class TsscGameServiceTest {
+class TsscGameTest {
 
 	private TsscGameService tsscGameService;
 	private TsscTopicService tsscTopicService;
@@ -28,7 +28,7 @@ class TsscGameServiceTest {
 	private TsscGame game;
 
 	@Autowired
-	public TsscGameServiceTest(TsscGameService tsscGameService, TsscTopicService tsscTopicService) {
+	public TsscGameTest(TsscGameService tsscGameService, TsscTopicService tsscTopicService) {
 		this.tsscGameService = tsscGameService;
 		this.tsscTopicService = tsscTopicService;
 	}

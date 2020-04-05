@@ -12,7 +12,7 @@ import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 import co.edu.icesi.fi.tics.tssc.service.TsscTopicService;
 
 @SpringBootTest
-class TsscTopicServiceTest {
+class TsscTopicTest {
 
 	@Autowired
 	private TsscTopicService tsscTopicService;
