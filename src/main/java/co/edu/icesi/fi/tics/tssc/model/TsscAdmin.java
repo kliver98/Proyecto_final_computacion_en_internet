@@ -19,10 +19,11 @@ public class TsscAdmin implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TSSC_ADMIN_ID_GENERATOR")
 	private long id;
 
+	@Column(name = "PASSWORD")
 	private String password;
 
-	@Column(name = "SUPER_ADMIN")
-	private String superAdmin;
+	@Column(name = "TYPE")
+	private AdminType type;
 
 	@Column(name = "AD_USER")
 	private String user;
@@ -55,12 +56,12 @@ public class TsscAdmin implements Serializable {
 		this.password = password;
 	}
 
-	public String getSuperAdmin() {
-		return this.superAdmin;
+	public AdminType getType() {
+		return this.type;
 	}
 
-	public void setSuperAdmin(String superAdmin) {
-		this.superAdmin = superAdmin;
+	public void setType(AdminType type) {
+		this.type = type;
 	}
 
 	public String getUser() {
