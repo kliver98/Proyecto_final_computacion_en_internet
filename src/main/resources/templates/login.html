@@ -1,11 +1,12 @@
 <style>
 html {
-  background-color: #56baed;
+  background-color: white;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  height: 100vh;
+  height: 90vh;
+  width: 97.5%;
 }
 
 a {
@@ -35,7 +36,7 @@ h2 {
   flex-direction: column; 
   justify-content: center;
   width: 100%;
-  min-height: 100%;
+  min-height: 70%;
   padding: 20px;
 }
 
@@ -263,15 +264,15 @@ input[type=text],input[type=password]:placeholder {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
 <div class="wrapper fadeInDown">
+<h1 style="text-align: center">Administración del Juego <br>- Scrum -<br> Universidad Icesi</h1>
   <div id="formContent">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
     <div class="fadeIn first">
     	<br>
-      <i class="fas fa-user-o ml-2">Login</i><br>
+      <i class="fas fa-user-o ml-2">Por favor inicie sesión</i><br>
       <span th:if="${param.error}" class="text-danger">An error ocurred. Try again</span>
       <span th:if="${param.logout}" class="text-success">You've successful log-out!</span>
     </div>

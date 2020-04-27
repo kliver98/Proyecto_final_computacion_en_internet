@@ -2,6 +2,7 @@ package co.edu.icesi.fi.tics.tssc.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,4 +89,13 @@ public class TsscGameServiceImpl implements TsscGameService {
 		return tsscGameRepository.findAll();
 	}
 
+	@Override
+	public Optional<TsscGame> findById(long id) {
+		return tsscGameRepository.findById(id);
+	}
+
+	public void delete(TsscGame game) {
+		tsscGameRepository.delete(game);
+	}
+	
 }

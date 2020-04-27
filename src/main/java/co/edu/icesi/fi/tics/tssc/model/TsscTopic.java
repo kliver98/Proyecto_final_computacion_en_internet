@@ -22,8 +22,10 @@ public class TsscTopic implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TSSC_TOPIC_ID_GENERATOR")
 	private long id;
 
+	@Column(name = "DESCRIPTION")
 	private String description;
 
+	@Column(name = "NAME")
 	private String name;
 
 	@Column(name = "DEFAULT_SPRINTS")

@@ -19,11 +19,16 @@
 	<div th:switch="${apps}" class="container my-5">
 		<div class="row">
 			<div class="col-md-6">
-				<h2 th:case="null">Users and Appointments!</h2>
+				<h2 th:case="null">-Simulación Scrum - Universidad Icesi</h2>
+				<br><br>
 				
-				<p sec:authorize="hasRole('ADMIN')"><a href="/users/"><i class="fas fa-user-edit ml-2"></i> Go to Users</a></p>
-				<p sec:authorize="hasRole('patient') OR hasRole('doctor')"><a href="/apps/"><i class="fas fa-calendar ml-2"></i> Go to Appointments</a></p>
-				<p><a href="/logout"><i class="fas fa-times ml-2"></i> Logout</a></p>
+				<!--<p sec:authorize="hasRole('ADMIN')"><a href="/users/"><i class="fas fa-user-edit ml-2"></i> Go to Users</a></p>
+				<p sec:authorize="hasRole('patient') OR hasRole('doctor')"><a href="/apps/"><i class="fas fa-calendar ml-2"></i> Go to Appointments</a></p>-->
+				<p><a href="/game/"><i class="fa fa-gamepad ml-2"></i> Gestión de Juegos</a></p>
+				<p><a href="/topic/"><i class="fa fa-bookmark ml-2"></i> Gestión de Temas</a></p>
+				<!-- <p><a href="/story/"><i class="fa fa-book ml-2"></i> Gestión de Historias</a></p> -->
+				<p><a href="/admin/"><i class="fa fa-user ml-2"></i> Gestión de Administradores</a></p>
+				<p><a href="/logout"><i class="fa fa-home ml-2"></i> logout</a></p>
 			</div>
 		</div>
 	</div>

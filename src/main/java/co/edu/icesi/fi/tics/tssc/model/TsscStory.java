@@ -40,6 +40,7 @@ public class TsscStory implements Serializable {
 	@Column(name = "BUSINESS_VALUE")
 	private BigDecimal businessValue;
 
+	@Column(name = "DESCRIPTION")
 	private String description;
 
 	@Column(name = "INITIAL_SPRINT")
@@ -48,6 +49,7 @@ public class TsscStory implements Serializable {
 	@Column(name = "ST_NUMBER")
 	private BigDecimal number;
 
+	@Column(name = "PRIORITY")
 	private BigDecimal priority;
 
 	@Column(name = "SHORT_DESCRIPTION")

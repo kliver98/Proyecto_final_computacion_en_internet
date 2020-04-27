@@ -9,7 +9,7 @@ import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
 import co.edu.icesi.fi.tics.tssc.service.TsscAdminServiceImpl;
 
 @Controller
-public class UserController {
+public class TsscAdminController {
 
 	@Autowired
 	private TsscAdminServiceImpl tsscAdminService;
@@ -21,10 +21,6 @@ public class UserController {
 	
 	@GetMapping("/login")
 	public String login() {
-		System.out.println("     >>> ");
-		for (TsscAdmin u : tsscAdminService.findAll()) {
-			System.out.println(u.getId()+" - "+u.getUser());
-		}
 		return "/login";
 	}
 

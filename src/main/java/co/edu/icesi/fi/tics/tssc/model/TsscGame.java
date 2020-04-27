@@ -39,6 +39,7 @@ public class TsscGame implements Serializable {
 	@Column(name = "N_SPRINTS")
 	private Integer nSprints = 4;
 
+	@Column(name = "NAME")
 	private String name;
 
 	@Column(name = "PAUSE_SECONDS")
