@@ -20,7 +20,7 @@
 		<h2 class="mb-5">Crear nuevo tema</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/users/add/}" th:object="${user}"
+				<form action="#" th:action="@{/topic/add/}" th:object="${topic}"
 					method="post">
 					<div class="row">
 						<div class="form-group col-md-6">
@@ -42,28 +42,28 @@
 						</div>
 						<div class="form-group col-md-6">
 						
-							<label for="ngroups" class="col-form-label">Número de grupos por defecto</label> 
+							<label for="defaultGroups" class="col-form-label">Número de grupos por defecto</label> 
 							<br>
-							<span th:if="${#fields.hasErrors('ngroups')}"
-								th:errors="*{ngroups}" class="text-danger"></span>
+							<span th:if="${#fields.hasErrors('defaultGroups')}"
+								th:errors="*{defaultGroups}" class="text-danger"></span>
 							<input
-								type="number" th:field="*{ngroups}" class="form-control" id="ngroups" value="0" min="0">
+								type="number" th:field="*{defaultGroups}" class="form-control" id="defaultGroups" min="1" value="4">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="nsprints" class="col-form-label">Número de sprints por defecto</label>
+							<label for="defaultSprints" class="col-form-label">Número de sprints por defecto</label>
 							<br>
-							<span th:if="${#fields.hasErrors('nsprints')}"
-								th:errors="*{nsprints}" class="text-danger"></span>
+							<span th:if="${#fields.hasErrors('defaultSprints')}"
+								th:errors="*{defaultSprints}" class="text-danger"></span>
 							 <input
-								type="number" th:field="*{nsprints}" class="form-control" id="nsprints" value="0" min="0">
+								type="number" th:field="*{defaultSprints}" class="form-control" id="defaultSprints"  min="1" value="4">
 						</div>
 						<div class="form-group col-md-6">
 
 
-							<label for="prefixGroups" class="col-form-label">Prefijo para grupos</label>
+							<label for="groupPrefix" class="col-form-label">Prefijo para grupos</label>
 							<br>
 							<input
-								type="text" th:field="*{prefixGroups}" class="form-control" id="prefixGroups" placeholder="Grupo">
+								type="text" th:field="*{groupPrefix}" class="form-control" id="groupPrefix" placeholder="Grupo">
 						</div>
 					</div>
 					<div class="row">

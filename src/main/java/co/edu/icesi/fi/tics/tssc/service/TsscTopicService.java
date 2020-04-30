@@ -14,4 +14,6 @@ public interface TsscTopicService {
 	
 	Optional<TsscTopic> findById(long id);
 	
+	void delete(TsscTopic topic);
+	
 }

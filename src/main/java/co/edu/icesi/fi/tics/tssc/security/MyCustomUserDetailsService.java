@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import co.edu.icesi.fi.tics.tssc.model.AdminType;
 import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
 import co.edu.icesi.fi.tics.tssc.repository.TsscAdminRepository;
 
@@ -19,15 +18,15 @@ public class MyCustomUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		TsscAdmin userApp = tsscAdminRepository.findByUser(userName).get();
-		if (userApp != null) {
+		TsscAdmin admin = tsscAdminRepository.findByUser(userName).get();
+		if (admin != null) {
 			User.UserBuilder builder = User.withUsername(userName)
-					.password(userApp.getPassword())
-					.roles(AdminType.superAdmin.toString());
+					.password(admin.getPassword())
+					.roles(admin.getType().toString());
 			
 			return builder.build();
 		} else {
-			throw new UsernameNotFoundException("User not found.");
+			throw new UsernameNotFoundException("Admin not found.");
 		}
 	}
 }

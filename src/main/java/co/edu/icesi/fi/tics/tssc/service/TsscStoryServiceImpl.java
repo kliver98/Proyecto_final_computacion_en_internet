@@ -57,5 +57,10 @@ public class TsscStoryServiceImpl implements TsscStoryService {
 	public Iterable<TsscStory> findAll() {
 		return tsscStoryRepository.findAll();
 	}
+
+	@Override
+	public void delete(TsscStory story) {
+		tsscStoryRepository.delete(story);
+	}
 	
 }

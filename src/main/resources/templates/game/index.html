@@ -52,7 +52,7 @@
 										class="fa fa-times ml-2"></i></a></td>
 								<td><a th:href="@{/story/game/{id}(id=${game.id})}"
 									class="btn btn-primary"><i class="fa fa-book ml-2"></i></a></td>
-								<td><a th:href="@{/topic/edit/{id}(id=${game.tsscTopic.id})}"
+								<td><a th:href="@{/topic/edit/{id}(id=${game.tsscTopic!=null ? game.tsscTopic.id:'../../'})}"
 									class="btn btn-primary"><i
 										class="fa fa-bookmark ml-2"></i></a></td>
 							</tr>
@@ -60,7 +60,7 @@
 					</table>
 				</div>
 				<p class="my-5">
-					<a href="/game/add" class="btn btn-primary">Adicionar <i
+					<a href="/game/add/" class="btn btn-primary">Adicionar <i
 						class="fa fa-plus ml-2"></i></a>
 				</p>
 			</div>

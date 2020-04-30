@@ -14,4 +14,6 @@ public interface TsscStoryService {
 	
 	Optional<TsscStory> findById(long id);
 	
+	void delete(TsscStory story);
+	
 }

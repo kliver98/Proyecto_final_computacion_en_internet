@@ -1,0 +1,20 @@
+
+
+El taller 2 no dice/decia nada acerca de implementar servicios ni vistas o cualquier otra cosa
+relacionada a los administradores, por tal motivo si se desea añadir o remover o editar un administrador
+(o super-administrador) debera quemarlo en codigo.
+
+Para motivos de este taller, ya he quemado dos admins los cuales tienen como contraseña el mismo nombre
+de usuario. 
+El Administrador es: User > admin ; Pass > admin
+El super-administrador es: User > super ; Pass > super
+
+Como dije, queme/agrege otros objetos: Un juego, un tema y una historia. Con las condiciones suficientes.
+
+__________________________________
+
+No hice/muestra: mensajes de error cuando se va a crear algo o editar.
+No hice lo de agregar con grupos.
+Demas considero que esta todo, ya depende de si me equivoco cuando revisas.
+
+**Los input para password no decia que tenian que ser de ese tipo (password) pero como no decia. Los deje en texto

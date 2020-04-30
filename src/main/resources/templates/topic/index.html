@@ -50,7 +50,7 @@
 						</tbody>
 					</table>
 				</div>
-				<p class="my-5">
+				<p class="my-5" sec:authorize="hasRole('superAdmin')">
 					<a href="/topic/add" class="btn btn-primary">Adicionar <i
 						class="fa fa-plus ml-2"></i></a>
 				</p>

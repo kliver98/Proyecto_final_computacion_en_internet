@@ -24,18 +24,20 @@ public class TsscGameServiceImpl implements TsscGameService {
 
 	@Override
 	public TsscGame saveGame(TsscGame game, Iterable<TsscTopic> topics) {
-		if (game == null || game.getTsscTopic() == null)
+		if (game == null)
 			throw new NullPointerException("Neither the game or topic in the game is null");
 		TsscTopic topic = game.getTsscTopic();
-		long id = topic.getId();
-		for (TsscTopic item : topics) {
-			if (item.getId() == id) {
-				id = -1;
-				break;
+		if (topic!=null) {
+			long id = topic.getId();
+			for (TsscTopic item : topics) {
+				if (item.getId() == id) {
+					id = -1;
+					break;
+				}
 			}
+			if (id != -1)
+				throw new RuntimeException("The topic doesn't exist");// NullPointer for not put throws in signature
 		}
-		if (id != -1)
-			throw new RuntimeException("The topic doesn't exist");// NullPointer for not put throws in signature
 		long springs = game.getNSprints(), groups = game.getNGroups();
 		if (springs < 1 || groups < 1)
 			throw new RuntimeException("There's an error in minimum number of Springs and/or Groups");

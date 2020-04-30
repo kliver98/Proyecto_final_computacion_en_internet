@@ -44,4 +44,9 @@ public class TsscTopicServiceImpl implements TsscTopicService {
 		return tsscTopicRepository.findById(id);
 	}
 	
+	@Override
+	public void delete(TsscTopic topic) {
+		tsscTopicRepository.delete(topic);
+	}
+	
 }

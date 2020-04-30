@@ -20,8 +20,8 @@
 		<h2 class="mb-5">Crear nuevo juego</h2>
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" th:action="@{/users/add/}" th:object="${user}"
-					method="post">
+				<form action="#" th:object="${game}"
+					th:action="@{/game/add/}" method="post">
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label for="name" class="col-form-label">Nombre del juego</label> 
@@ -33,40 +33,40 @@
 								placeholder="201-MGP-Full">
 						</div>
 						<div class="form-group col-md-6">
-							<label for="password" class="col-form-label">Contraseña admin</label>
+							<label for="adminPassword" class="col-form-label">Contraseña admin</label>
 							<br>
 							 <input
-								type="text" th:field="*{password}" class="form-control" id="password" placeholder="AP5R4FjiWt">
+								type="text" th:field="*{adminPassword}" class="form-control" id="adminPassword" placeholder="AP5R4FjiWt">
 						</div>
 						<div class="form-group col-md-6">
 						
-							<label for="date" class="col-form-label">Fecha</label> 
+							<label for="scheduledDate" class="col-form-label">Fecha</label> 
 							<br>
 							<input
-								type="date" th:field="*{date}" class="form-control"
-								id="date">
+								type="date" th:field="*{scheduledDate}" class="form-control"
+								id="scheduledDate">
 						</div>
 						<div class="form-group col-md-6">
 						
-							<label for="time" class="col-form-label">Hora</label> 
+							<label for="scheduledTime" class="col-form-label">Hora</label> 
 							<br>
 							<input
-								type="time" th:field="*{time}" class="form-control"
-								id="time">
+								type="time" th:field="*{scheduledTime}" class="form-control"
+								id="scheduledTime">
 						</div>
 						<div class="form-group col-md-6">
 						
-							<label for="ngroups" class="col-form-label">Cantidad Grupos</label> 
+							<label for="nGroups" class="col-form-label">Cantidad Grupos</label> 
 							<br>
 							<input
-								type="number" th:field="*{ngroups}" class="form-control" id="ngroups" value="4" min="0">
+								type="number" th:field="*{nGroups}" class="form-control" id="nGroups" value="4" min="1">
 						</div>
 						<div class="form-group col-md-6">
 						
-							<label for="nsprints" class="col-form-label">Cantidad Sprints</label> 
+							<label for="nSprints" class="col-form-label">Cantidad Sprints</label> 
 							<br>
 							<input
-								type="number" th:field="*{nsprints}" class="form-control" id="nsprints" value="4" min="0">
+								type="number" th:field="*{nSprints}" class="form-control" id="nSprints" value="4" min="1">
 						</div>
 						<div class="form-group col-md-6">
 
@@ -84,14 +84,16 @@
 						</div>
 						<div class="form-group col-md-6">
 						
-							<label for="topic" class="col-form-label">Seleccionar tema</label> 
+							<label for="tsscTopic" class="col-form-label">Seleccionar tema</label> 
 							<br>
-							<span th:if="${#fields.hasErrors('topic')}"
-								th:errors="*{topic}" class="text-danger"></span>
+							<span th:if="${#fields.hasErrors('tsscTopic')}"
+								th:errors="*{tsscTopic}" class="text-danger"></span>
 							<select
-								class="form-control-range" th:field="*{topic}" id="topic" required>
-								<option th:each="tp : ${topics}" th:value="${tp}"
-									class="form-control" th:text="${tp}"></option>
+								class="form-control-range" th:field="*{tsscTopic}" id="tsscTopic" required name="tsscTopic">
+								<option value="-1"
+									class="form-control" selected>Seleccione...</option>
+								<option th:each="tp : ${topics}" th:value="${tp.id}"
+									class="form-control" th:text="${tp.name}"></option>
 							</select>
 						</div>
 					</div>
