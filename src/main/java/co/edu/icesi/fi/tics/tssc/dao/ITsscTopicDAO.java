@@ -6,18 +6,18 @@ import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 public interface ITsscTopicDAO {
 
-	TsscTopic save(TsscTopic topic);
+	void save(TsscTopic topic);
 	
-	TsscTopic edit(TsscTopic topic);
+	void update(TsscTopic topic);
+	
+	void delete(TsscTopic topic);
 	
 	List<TsscTopic> findAll();
 	
 	TsscTopic findById(long id);
 	
-	boolean delete(TsscTopic topic);
+	List<TsscTopic> findByName(String name);
 	
-	TsscTopic findByName(String name);
-	
-	TsscTopic findByDescription(String description);
+	List<TsscTopic> findByDescription(String description);
 	
 }

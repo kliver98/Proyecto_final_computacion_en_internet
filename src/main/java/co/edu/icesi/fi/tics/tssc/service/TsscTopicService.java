@@ -1,7 +1,5 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
-import java.util.Optional;
-
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 public interface TsscTopicService {
@@ -12,7 +10,7 @@ public interface TsscTopicService {
 	
 	Iterable<TsscTopic> findAll();
 	
-	Optional<TsscTopic> findById(long id);
+	TsscTopic findById(long id);
 	
 	void delete(TsscTopic topic);
 	

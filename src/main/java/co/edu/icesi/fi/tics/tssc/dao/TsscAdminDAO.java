@@ -30,9 +30,8 @@ public class TsscAdminDAO implements ITsscAdminDAO {
 	}
 
 	@Override
-	public TsscAdmin save(TsscAdmin user) {
+	public void save(TsscAdmin user) {
 		entityManager.persist(user);
-		return entityManager.find(TsscAdmin.class, user.getId());
 	}
 
 	@Override
@@ -42,14 +41,13 @@ public class TsscAdminDAO implements ITsscAdminDAO {
 
 	@Override
 	public List<TsscAdmin> findAll() {
-		String query = "Select * from TsscAdmin";
+		String query = "Select a from TsscAdmin a";
 		return entityManager.createQuery(query, TsscAdmin.class).getResultList();
 	}
 
 	@Override
-	public boolean delete(TsscAdmin user) {
+	public void delete(TsscAdmin user) {
 		entityManager.remove(user);
-		return findById(user.getId())==null;
 	}
 
 	@Override

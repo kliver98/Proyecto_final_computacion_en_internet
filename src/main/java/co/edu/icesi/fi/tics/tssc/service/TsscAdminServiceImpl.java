@@ -1,40 +1,38 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.edu.icesi.fi.tics.tssc.dao.TsscAdminDAO;
 import co.edu.icesi.fi.tics.tssc.model.AdminType;
 import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
-import co.edu.icesi.fi.tics.tssc.repository.TsscAdminRepository;
 
 @Service
 @Transactional
 public class TsscAdminServiceImpl implements TsscAdminService {
 
 	@Autowired
-	private TsscAdminRepository tsscAdminRepository;
+	private TsscAdminDAO tsscAdminDAO;
 	
 	@Override
 	public void save(TsscAdmin user) {
-		tsscAdminRepository.save(user);
+		tsscAdminDAO.save(user);
 	}
 
 	@Override
-	public Optional<TsscAdmin> findById(long id) {
-		return tsscAdminRepository.findById(id);
+	public TsscAdmin findById(long id) {
+		return tsscAdminDAO.findById(id);
 	}
 
 	@Override
 	public Iterable<TsscAdmin> findAll() {
-		return tsscAdminRepository.findAll();
+		return tsscAdminDAO.findAll();
 	}
 
 	@Override
 	public void delete(TsscAdmin user) {
-		tsscAdminRepository.delete(user);
+		tsscAdminDAO.delete(user);
 	}
 
 	@Override

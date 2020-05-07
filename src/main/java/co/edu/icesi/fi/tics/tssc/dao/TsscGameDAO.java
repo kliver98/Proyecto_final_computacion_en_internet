@@ -21,9 +21,8 @@ public class TsscGameDAO implements ITsscGameDAO {
 	private EntityManager entityManager;
 	
 	@Override
-	public TsscGame save(TsscGame game) {
+	public void save(TsscGame game) {
 		entityManager.persist(game);
-		return entityManager.find(TsscGame.class, game.getId());
 	}
 
 	@Override
@@ -32,20 +31,19 @@ public class TsscGameDAO implements ITsscGameDAO {
 	}
 
 	@Override
-	public TsscGame edit(TsscGame game) {
-		return save(game);
+	public void update(TsscGame game) {
+		save(game);
 	}
 
 	@Override
 	public List<TsscGame> findAll() {
-		String query = "Select * from TsscGame";
+		String query = "Select a from TsscGame a";
 		return entityManager.createQuery(query, TsscGame.class).getResultList();
 	}
 
 	@Override
-	public boolean delete(TsscGame game) {
+	public void delete(TsscGame game) {
 		entityManager.remove(game);
-		return findById(game.getId())==null;
 	}
 
 	@Override

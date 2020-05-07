@@ -2,7 +2,6 @@ package co.edu.icesi.fi.tics.tssc.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,10 +62,10 @@ public class TsscStoryController {
 	
 	@GetMapping("/story/edit/{id}")
 	public String edit(@PathVariable("id") long id, Model model) {
-		Optional<TsscStory> story = tsscStoryService.findById(id);
+		TsscStory story = tsscStoryService.findById(id);
 		if (story == null)
 			throw new IllegalArgumentException("Invalid story Id:" + id);
-		model.addAttribute("story", story.get());
+		model.addAttribute("story", story);
 		model.addAttribute("games", tsscGameService.findAll());
 		return "story/edit";
 	}
@@ -89,7 +88,9 @@ public class TsscStoryController {
 	
 	@GetMapping("/story/del/{id}")
 	public String deleteUser(@PathVariable("id") long id) {
-		TsscStory story = tsscStoryService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid story Id:" + id));
+		TsscStory story = tsscStoryService.findById(id);
+		if (story==null)
+			throw new IllegalArgumentException("Invalid story Id:" + id);
 		tsscStoryService.delete(story);
 		return "redirect:/game/";
 	}

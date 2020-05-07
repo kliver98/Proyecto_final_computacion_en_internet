@@ -6,14 +6,14 @@ import co.edu.icesi.fi.tics.tssc.model.TsscStory;
 
 public interface ITsscStoryDAO {
 
-	TsscStory save(TsscStory story);
+	void save(TsscStory story);
 	
-	TsscStory edit(TsscStory story);
+	void update(TsscStory story);
+	
+	void delete(TsscStory story);
 	
 	List<TsscStory> findAll();
 	
 	TsscStory findById(long id);
-	
-	boolean delete(TsscStory story);
 	
 }

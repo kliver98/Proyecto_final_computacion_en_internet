@@ -8,15 +8,15 @@ import co.edu.icesi.fi.tics.tssc.model.TsscGame;
 
 public interface ITsscGameDAO {
 
-	TsscGame save(TsscGame game);
+	void save(TsscGame game);
 	
-	TsscGame findById(long id);
+	void update(TsscGame game);
 	
-	TsscGame edit(TsscGame game);
+	void delete(TsscGame game);
 	
 	List<TsscGame> findAll();
 	
-	boolean delete(TsscGame game);
+	TsscGame findById(long id);
 	
 	List<TsscGame> findByIdTopic(long id);
 	

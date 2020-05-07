@@ -7,15 +7,15 @@ import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
 
 public interface ITsscAdminDAO {
 
-	List<TsscAdmin> findByUser(String user);
+	void save(TsscAdmin user);
 	
-	TsscAdmin save(TsscAdmin user);
+	void delete(TsscAdmin user);
+	
+	List<TsscAdmin> findByUser(String user);
 
 	TsscAdmin findById(long id);
 
 	List<TsscAdmin> findAll();
-
-	boolean delete(TsscAdmin user);
 
 	AdminType[] getTypes();
 	

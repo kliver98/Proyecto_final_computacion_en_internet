@@ -18,20 +18,18 @@ public class TsscStoryDAO implements ITsscStoryDAO {
 	private EntityManager entityManager;
 	
 	@Override
-	public TsscStory save(TsscStory story) {
+	public void save(TsscStory story) {
 		entityManager.persist(story);
-		return entityManager.find(TsscStory.class, story.getId());
 	}
 
 	@Override
-	public TsscStory edit(TsscStory story) {
+	public void update(TsscStory story) {
 		save(story);
-		return findById(story.getId());
 	}
 
 	@Override
 	public List<TsscStory> findAll() {
-		String query = "Select * from TsscStory";
+		String query = "Select a from TsscStory a";
 		return entityManager.createQuery(query, TsscStory.class).getResultList();
 	}
 
@@ -41,9 +39,8 @@ public class TsscStoryDAO implements ITsscStoryDAO {
 	}
 
 	@Override
-	public boolean delete(TsscStory story) {
+	public void delete(TsscStory story) {
 		entityManager.remove(story);
-		return findById(story.getId())==null;
 	}
 
 }

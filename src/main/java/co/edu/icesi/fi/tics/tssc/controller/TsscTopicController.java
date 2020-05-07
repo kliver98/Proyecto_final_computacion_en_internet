@@ -1,7 +1,5 @@
 package co.edu.icesi.fi.tics.tssc.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import co.edu.icesi.fi.tics.tssc.model.TsscGame;
-import co.edu.icesi.fi.tics.tssc.model.TsscStory;
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 import co.edu.icesi.fi.tics.tssc.service.TsscTopicService;
 
@@ -57,10 +53,10 @@ public class TsscTopicController {
 	
 	@GetMapping("/topic/edit/{id}")
 	public String edit(@PathVariable("id") long id, Model model) {
-		Optional<TsscTopic> topic = tsscTopicService.findById(id);
+		TsscTopic topic = tsscTopicService.findById(id);
 		if (topic == null)
 			throw new IllegalArgumentException("Invalid topic Id:" + id);
-		model.addAttribute("topic", topic.get());
+		model.addAttribute("topic", topic);
 		return "topic/edit";
 	}
 	
@@ -79,7 +75,9 @@ public class TsscTopicController {
 	
 	@GetMapping("/topic/del/{id}")
 	public String deleteUser(@PathVariable("id") long id) {
-		TsscTopic topic = tsscTopicService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid topic Id:" + id));
+		TsscTopic topic = tsscTopicService.findById(id);
+		if (topic == null)
+			throw new IllegalArgumentException("Invalid topic Id:" + id);
 		tsscTopicService.delete(topic);
 		return "redirect:/game/";
 	}

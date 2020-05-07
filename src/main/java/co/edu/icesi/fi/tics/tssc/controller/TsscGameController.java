@@ -1,7 +1,6 @@
 package co.edu.icesi.fi.tics.tssc.controller;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,10 +70,10 @@ public class TsscGameController {
 	
 	@GetMapping("/game/edit/{id}")
 	public String edit(@PathVariable("id") long id, Model model) {
-		Optional<TsscGame> game = tsscGameService.findById(id);
+		TsscGame game = tsscGameService.findById(id);
 		if (game == null)
 			throw new IllegalArgumentException("Invalid game Id:" + id);
-		model.addAttribute("game", game.get());
+		model.addAttribute("game", game);
 		model.addAttribute("topics", tsscTopicService.findAll());
 		return "game/edit";
 	}
@@ -86,7 +85,7 @@ public class TsscGameController {
 			if (bindingResult.hasErrors()) {
 				return "/game/edit/";
 			} else {
-				TsscGame g = tsscGameService.findById(id).get();
+				TsscGame g = tsscGameService.findById(id);
 				game.setStartTime(g.getStartTime());
 				game.setScheduledDate(g.getScheduledDate());
 				game.setScheduledTime(g.getScheduledTime());
@@ -98,7 +97,9 @@ public class TsscGameController {
 	
 	@GetMapping("/game/del/{id}")
 	public String deleteUser(@PathVariable("id") long id) {
-		TsscGame game = tsscGameService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		TsscGame game = tsscGameService.findById(id);
+		if (game==null)
+			throw new IllegalArgumentException("Invalid user Id:" + id);
 		tsscGameService.delete(game);
 		return "redirect:/game/";
 	}

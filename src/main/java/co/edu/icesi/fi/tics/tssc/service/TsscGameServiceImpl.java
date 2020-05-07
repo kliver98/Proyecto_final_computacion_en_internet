@@ -10,17 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 
+import co.edu.icesi.fi.tics.tssc.dao.TsscGameDAO;
 import co.edu.icesi.fi.tics.tssc.model.TsscGame;
 import co.edu.icesi.fi.tics.tssc.model.TsscStory;
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
-import co.edu.icesi.fi.tics.tssc.repository.TsscGameRepository;
 
 @Service
 @Transactional
 public class TsscGameServiceImpl implements TsscGameService {
 
 	@Autowired
-	private TsscGameRepository tsscGameRepository;
+	private TsscGameDAO tsscGameDAO;
 
 	@Override
 	public TsscGame saveGame(TsscGame game, Iterable<TsscTopic> topics) {
@@ -41,8 +41,8 @@ public class TsscGameServiceImpl implements TsscGameService {
 		long springs = game.getNSprints(), groups = game.getNGroups();
 		if (springs < 1 || groups < 1)
 			throw new RuntimeException("There's an error in minimum number of Springs and/or Groups");
-		tsscGameRepository.save(game);
-		return tsscGameRepository.findById(game.getId()).get();
+		tsscGameDAO.save(game);
+		return tsscGameDAO.findById(game.getId());
 	}
 	
 	@Override
@@ -71,8 +71,8 @@ public class TsscGameServiceImpl implements TsscGameService {
 		game.setTsscStories(copyStories);
 		//NO SE CUALES SEAN LOS CRONOGRMAS DEL TOPIC, BUSQUE BUSQUE Y NADA AL FIN....POR ESO SOLO HAGO COPIA A LAS STORIES
 		//Finish creating copies
-		tsscGameRepository.save(game);
-		return tsscGameRepository.findById(game.getId()).get();
+		tsscGameDAO.save(game);
+		return tsscGameDAO.findById(game.getId());
 	}
 
 	@Override
@@ -82,22 +82,22 @@ public class TsscGameServiceImpl implements TsscGameService {
 		long springs = game.getNSprints(), groups = game.getNGroups();
 		if (springs < 1 || groups < 1)
 			new RuntimeException("There's an error in minimum number of Springs and/or Groups");
-		tsscGameRepository.save(game);
-		return tsscGameRepository.findById(game.getId()).get();
+		tsscGameDAO.save(game);
+		return tsscGameDAO.findById(game.getId());
 	}
 	
 	@Override
 	public Iterable<TsscGame> findAll() {
-		return tsscGameRepository.findAll();
+		return tsscGameDAO.findAll();
 	}
 
 	@Override
-	public Optional<TsscGame> findById(long id) {
-		return tsscGameRepository.findById(id);
+	public TsscGame findById(long id) {
+		return tsscGameDAO.findById(id);
 	}
 
 	public void delete(TsscGame game) {
-		tsscGameRepository.delete(game);
+		tsscGameDAO.delete(game);
 	}
 	
 }

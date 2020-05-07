@@ -1,7 +1,5 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
-import java.util.Optional;
-
 import co.edu.icesi.fi.tics.tssc.model.*;
 
 public interface TsscStoryService {
@@ -12,7 +10,7 @@ public interface TsscStoryService {
 	
 	Iterable<TsscStory> findAll();
 	
-	Optional<TsscStory> findById(long id);
+	TsscStory findById(long id);
 	
 	void delete(TsscStory story);
 	
