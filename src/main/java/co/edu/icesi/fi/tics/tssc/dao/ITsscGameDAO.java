@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import co.edu.icesi.fi.tics.tssc.model.TsscGame;
+import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 public interface ITsscGameDAO {
 
@@ -27,5 +28,9 @@ public interface ITsscGameDAO {
 	List<TsscGame> findByDateRange(LocalDate initial, LocalDate end);
 	
 	List<TsscGame> findByDateAndTimeRange(LocalDate date, LocalTime initialTime, LocalTime endTime);
+	
+	List<TsscTopic[]> findTopicsByDate(LocalDate date);
+	
+	List<TsscGame> findByNoStoriesNoTimeControls(LocalDate date);
 	
 }

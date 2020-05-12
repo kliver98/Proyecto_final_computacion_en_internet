@@ -24,7 +24,7 @@ public class TsscStoryDAO implements ITsscStoryDAO {
 
 	@Override
 	public void update(TsscStory story) {
-		save(story);
+		entityManager.merge(story);
 	}
 
 	@Override

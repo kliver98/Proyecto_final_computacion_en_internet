@@ -5,13 +5,13 @@ import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 public interface TsscGameService {
 
-	TsscGame saveGame(TsscGame game, Iterable<TsscTopic> topics);
+	TsscGame save(TsscGame game, Iterable<TsscTopic> topics);
 	
-	TsscGame saveGame2(TsscGame game, Iterable<TsscTopic> topics);
+	TsscGame save2(TsscGame game, Iterable<TsscTopic> topics);
 	
 	TsscGame findById(long id);
 	
-	TsscGame editGame(TsscGame game);
+	TsscGame update(TsscGame game);
 	
 	Iterable<TsscGame> findAll();
 	

@@ -53,7 +53,7 @@ public class TsscStoryController {
 				model.addAttribute("games", tsscGameService.findAll());
 				return "/story/save";
 			} else {
-				TsscStory f = tsscStoryService.saveStory(story, tsscGameService.findAll());
+				TsscStory f = tsscStoryService.save(story, tsscGameService.findAll());
 				return "redirect:/story/game/"+f.getTsscGame().getId();
 			}
 		}
@@ -80,7 +80,7 @@ public class TsscStoryController {
 				return "/story/edit/";
 			} else {
 				story.setBusinessValue(businessValue);
-				tsscStoryService.editStory(story);
+				tsscStoryService.update(story);
 			}
 		}
 		return "redirect:/story/game/"+story.getTsscGame().getId();

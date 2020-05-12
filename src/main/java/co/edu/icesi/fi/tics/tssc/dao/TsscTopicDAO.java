@@ -24,13 +24,13 @@ public class TsscTopicDAO implements ITsscTopicDAO {
 
 	@Override
 	public void update(TsscTopic topic) {
-		save(topic);
+		entityManager.merge(topic);
 	}
 
 	@Override
 	public List<TsscTopic> findAll() {
-		String jpql = "SELECT a FROM TsscTopic a";
-		return entityManager.createQuery(jpql, TsscTopic.class).getResultList();
+		String q = "SELECT a FROM TsscTopic a";
+		return entityManager.createQuery(q, TsscTopic.class).getResultList();
 	}
 
 	@Override
@@ -45,14 +45,14 @@ public class TsscTopicDAO implements ITsscTopicDAO {
 
 	@Override
 	public List<TsscTopic> findByName(String name) {
-		String jpql = "SELECT a FROM TsscTopic a WHERE a.name = '"+name+"'";
-		return entityManager.createQuery(jpql, TsscTopic.class).getResultList();
+		String q = "SELECT a FROM TsscTopic a WHERE a.name = '"+name+"'";
+		return entityManager.createQuery(q, TsscTopic.class).getResultList();
 	}
 
 	@Override
 	public List<TsscTopic> findByDescription(String description) {
-		String jpql = "SELECT a FROM TsscTopic a WHERE a.description = '"+description+"'";
-		return entityManager.createQuery(jpql, TsscTopic.class).getResultList();
+		String q = "SELECT a FROM TsscTopic a WHERE a.description = '"+description+"'";
+		return entityManager.createQuery(q, TsscTopic.class).getResultList();
 	}
 
 }

@@ -1,6 +1,5 @@
 package co.edu.icesi.fi.tics.tssc;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -41,20 +40,20 @@ class TsscTopicTest {
 	
 	//Caso 1
 	@Test
-	void testSaveTopicCase1() {
+	void testsaveCase1() {
 		setup();
-		retrieved = tsscTopicService.saveTopic(test);
+		retrieved = tsscTopicService.save(test);
 		assertSame("Tema NO guardado",test.getName(),retrieved.getName());
 	}
 	
 	//Caso 2
 	@Test
-	void testSaveTopicCase2() {
+	void testsaveCase2() {
 		setup();
 		test.setDefaultGroups(uno);
 		test.setDefaultSprints(cero);
 		try {			
-			retrieved = tsscTopicService.saveTopic(test);
+			retrieved = tsscTopicService.save(test);
 			assertTrue("Error en cantidad mínima",false);
 		} catch(RuntimeException e) {
 			assertTrue(true);
@@ -63,12 +62,12 @@ class TsscTopicTest {
 	
 	//Caso 3
 	@Test
-	void testSaveTopicCase3() {
+	void testsaveCase3() {
 		setup();
 		test = generateRandomTopic();
 		test.setDefaultGroups(cero);
 		try {			
-			retrieved = tsscTopicService.saveTopic(test);
+			retrieved = tsscTopicService.save(test);
 			assertTrue("Error en cantidad mínima",false);
 		} catch(RuntimeException e) {
 			assertTrue(true);
@@ -79,13 +78,12 @@ class TsscTopicTest {
 	@Test
 	void testEditTopicCase4() {
 		setup();
-		retrieved = tsscTopicService.saveTopic(test);
+		retrieved = tsscTopicService.save(test);
 		String newName = "New name"+Math.random();
 		retrieved.setName(newName);
-		TsscTopic retrieved2 = tsscTopicService.editTopic(retrieved);
+		TsscTopic retrieved2 = tsscTopicService.update(retrieved);
 		assertTrue( "Id's are not equals",(retrieved.getId()==retrieved2.getId()) );
-		assertFalse( "The name of topic wasn't update",test.getName().equals(retrieved2.getName()) 
-				&& (retrieved2.getName().equals(newName)) );
+		assertTrue( "The name of topic wasn't update",retrieved.getName().equals(newName));
 	}
 	
 	//Caso 5
@@ -94,7 +92,7 @@ class TsscTopicTest {
 		setup();
 		test.setDefaultSprints(cero);
 		try {
-			tsscTopicService.saveTopic(test);
+			tsscTopicService.save(test);
 			assertTrue("Error en cantidad mínima",false);
 		} catch (RuntimeException e) {
 			assertTrue(true);
@@ -107,7 +105,7 @@ class TsscTopicTest {
 		setup();
 		test.setDefaultGroups(cero);
 		try {
-			tsscTopicService.saveTopic(test);
+			tsscTopicService.save(test);
 			assertTrue("Error en cantidad mínima",false);
 		} catch (RuntimeException e) {
 			assertTrue(true);

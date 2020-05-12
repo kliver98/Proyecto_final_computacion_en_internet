@@ -9,14 +9,14 @@ import co.edu.icesi.fi.tics.tssc.dao.TsscTopicDAO;
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 @Service
+@Transactional
 public class TsscTopicServiceImpl implements TsscTopicService {
 
 	@Autowired
 	private TsscTopicDAO tsscTopicDAO;
 	
-	@Transactional
 	@Override
-	public TsscTopic saveTopic(TsscTopic topic) {
+	public TsscTopic save(TsscTopic topic) {
 		long springs = topic.getDefaultSprints(), groups = topic.getDefaultGroups();
 		if (springs<1 || groups<1)
 			throw new RuntimeException("There's an error in minimum number of Springs and/or Groups");
@@ -25,7 +25,7 @@ public class TsscTopicServiceImpl implements TsscTopicService {
 	}
 
 	@Override
-	public TsscTopic editTopic(TsscTopic topic) {
+	public TsscTopic update(TsscTopic topic) {
 		if (topic==null)
 			throw new NullPointerException("Can not edit the topic because it's null the topic to edit");
 		long springs = topic.getDefaultSprints(), groups = topic.getDefaultSprints();

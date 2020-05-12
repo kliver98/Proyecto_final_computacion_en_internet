@@ -1,7 +1,6 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -13,14 +12,14 @@ import co.edu.icesi.fi.tics.tssc.model.TsscGame;
 import co.edu.icesi.fi.tics.tssc.model.TsscStory;
 
 @Service
+@Transactional
 public class TsscStoryServiceImpl implements TsscStoryService {
 
 	@Autowired
 	private TsscStoryDAO tsscStoryDAO;
 	
-	@Transactional
 	@Override
-	public TsscStory saveStory(TsscStory story, Iterable<TsscGame> games) {
+	public TsscStory save(TsscStory story, Iterable<TsscGame> games) {
 		if (story==null || story.getTsscGame()==null)
 			throw new NullPointerException("Neither story or game of story is null");
 		BigDecimal bValue = story.getBusinessValue(), iSprint = story.getInitialSprint(), priority = story.getPriority();
@@ -41,7 +40,7 @@ public class TsscStoryServiceImpl implements TsscStoryService {
 	}
 
 	@Override
-	public TsscStory editStory(TsscStory story) {
+	public TsscStory update(TsscStory story) {
 		if (story == null)
 			new NullPointerException("Can not edit the story because it's null the story to edit");
 		BigDecimal bValue = story.getBusinessValue(), iSprint = story.getInitialSprint(), priority = story.getPriority();

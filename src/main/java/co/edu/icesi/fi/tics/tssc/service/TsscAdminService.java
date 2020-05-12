@@ -4,13 +4,15 @@ import co.edu.icesi.fi.tics.tssc.model.AdminType;
 import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
 
 public interface TsscAdminService {
-	public void save(TsscAdmin user);
+	
+	void save(TsscAdmin user);
 
-	public TsscAdmin findById(long id);
+	TsscAdmin findById(long id);
 
-	public Iterable<TsscAdmin> findAll();
+	Iterable<TsscAdmin> findAll();
 
-	public void delete(TsscAdmin user);
+	void delete(TsscAdmin user);
 
-	public AdminType[] getTypes();
+	AdminType[] getTypes();
+	
 }

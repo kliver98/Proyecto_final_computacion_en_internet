@@ -58,7 +58,7 @@ public class Taller1KliverApplication {
 		t.setName("My name of topic");
 		t.setGroupPrefix("Prefix");
 		ts[0] = t;
-		tImpl.saveTopic(t);
+		tImpl.save(t);
 		TsscGameServiceImpl gImpl = c.getBean(TsscGameServiceImpl.class);
 		TsscGame g = new TsscGame();
 		g.setTsscTopic(t);
@@ -71,7 +71,7 @@ public class Taller1KliverApplication {
 		g.setScheduledDate(LocalDate.now());
 		g.setStartTime(LocalTime.now());
 		g.setUserPassword("user");
-		gImpl.saveGame(g,tImpl.findAll());
+		gImpl.save(g,tImpl.findAll());
 		TsscStoryServiceImpl sImpl = c.getBean(TsscStoryServiceImpl.class);
 		TsscStory st = new TsscStory();
 		st.setDescription("My full description");
@@ -81,7 +81,7 @@ public class Taller1KliverApplication {
 		st.setBusinessValue(BigDecimal.TEN);
 		st.setShortDescription("Short desc");
 		st.setTsscGame(g);
-		sImpl.saveStory(st, gImpl.findAll());
+		sImpl.save(st, gImpl.findAll());
 	}
 
 }

@@ -71,211 +71,203 @@ class TsscStoryTest {
 
 	// Caso 15
 	@Test
-	void testSaveStoryCase15() {
+	void testsaveCase15() {
 		setup();
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
-		TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+		TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 		assertTrue(story.getId() == newStory.getId());
 	}
 
 	// Caso 16
 	@Test
-	void testSaveStoryCase16() {
+	void testsaveCase16() {
 		setup();
 		story.setBusinessValue(cero);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			assertTrue(story.getId() == newStory.getId());
 			assertTrue(false);
 		} catch (RuntimeException e) {
-			System.out.println("Case 16: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 17
 	@Test
-	void testSaveStoryCase17() {
+	void testsaveCase17() {
 		setup();
 		story.setInitialSprint(cero);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			assertTrue(story.getId() == newStory.getId());
 			assertTrue(false);
 		} catch (RuntimeException e) {
-			System.out.println("Case 17: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 18
 	@Test
-	void testSaveStoryCase18() {
+	void testsaveCase18() {
 		setup();
 		story.setPriority(cero);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			assertTrue(story.getId() == newStory.getId());
 			assertTrue(false);
 		} catch (RuntimeException e) {
-			System.out.println("Case 18: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 19
 	@Test
-	void testSaveStoryCase19() {
+	void testsaveCase19() {
 		setup();
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-//		tsscGameService.saveGame(game, tsscTopicService.findAll());
+//		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			assertTrue(story.getId() == newStory.getId());
 			assertTrue(false);
 		} catch (RuntimeException e) {
-			System.out.println("Case 19: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 20
 	@Test
-	void testEditStoryCase20() {
+	void testupdateCase20() {
 		setup();
 		story.setBusinessValue(uno);
 		story.setPriority(uno);
 		story.setInitialSprint(uno);
 		String oldDesc = "This is my first description #" + Math.random(), newDesc = "NewDesc#" + Math.random();
 		story.setDescription(oldDesc);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
-		TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+		TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 		newStory.setDescription(newDesc);
-		TsscStory newStory2 = tsscStoryService.editStory(newStory);
+		TsscStory newStory2 = tsscStoryService.update(newStory);
 		assertEquals(newDesc, newStory2.getDescription());
 		assertTrue("The id of the modified story doesn't match with first old one", story.getId() == newStory2.getId());
 	}
 
 	// Caso 21
 	@Test
-	void testEditStoryCase21() {
+	void testupdateCase21() {
 		setup();
 		story.setBusinessValue(cero);
 		story.setPriority(uno);
 		story.setInitialSprint(uno);
 		String oldDesc = "This is my first description #" + Math.random(), newDesc = "NewDesc#" + Math.random();
 		story.setDescription(oldDesc);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {			
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			newStory.setDescription(newDesc);
-			TsscStory newStory2 = tsscStoryService.editStory(newStory);
+			TsscStory newStory2 = tsscStoryService.update(newStory);
 			assertEquals(newDesc, newStory2.getDescription());
 			assertTrue("The id of the modified story doesn't match with first old one", story.getId() == newStory2.getId());
 			assertTrue(false);
 		} catch (Exception e) {
-			System.out.println("Case 21: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 22
 	@Test
-	void testEditStoryCase22() {
+	void testupdateCase22() {
 		setup();
 		story.setBusinessValue(uno);
 		story.setPriority(uno);
 		story.setInitialSprint(cero);
 		String oldDesc = "This is my first description #" + Math.random(), newDesc = "NewDesc#" + Math.random();
 		story.setDescription(oldDesc);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {			
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			newStory.setDescription(newDesc);
-			TsscStory newStory2 = tsscStoryService.editStory(newStory);
+			TsscStory newStory2 = tsscStoryService.update(newStory);
 			assertEquals(newDesc, newStory2.getDescription());
 			assertTrue("The id of the modified story doesn't match with first old one", story.getId() == newStory2.getId());
 			assertTrue(false);
 		} catch (Exception e) {
-			System.out.println("Case 22: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 23
 	@Test
-	void testEditStoryCase23() {
+	void testupdateCase23() {
 		setup();
 		story.setBusinessValue(uno);
 		story.setPriority(cero);
 		story.setInitialSprint(uno);
 		String oldDesc = "This is my first description #" + Math.random(), newDesc = "NewDesc#" + Math.random();
 		story.setDescription(oldDesc);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		tsscGameService.saveGame(game, tsscTopicService.findAll());
+		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {			
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			newStory.setDescription(newDesc);
-			TsscStory newStory2 = tsscStoryService.editStory(newStory);
+			TsscStory newStory2 = tsscStoryService.update(newStory);
 			assertEquals(newDesc, newStory2.getDescription());
 			assertTrue("The id of the modified story doesn't match with first old one", story.getId() == newStory2.getId());
 			assertTrue(false);
 		} catch (Exception e) {
-			System.out.println("Case 23: "+e);
 			assertTrue(true);
 		}
 	}
 
 	// Caso 24
 	@Test
-	void testEditStoryCase24() {
+	void testupdateCase24() {
 		setup();
 		story.setBusinessValue(uno);
 		story.setPriority(uno);
 		story.setInitialSprint(uno);
 		String oldDesc = "This is my first description #" + Math.random(), newDesc = "NewDesc#" + Math.random();
 		story.setDescription(oldDesc);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-//		tsscGameService.saveGame(game, tsscTopicService.findAll());
+//		tsscGameService.save(game, tsscTopicService.findAll());
 		story.setTsscGame(game);
 		try {			
-			TsscStory newStory = tsscStoryService.saveStory(story, tsscGameService.findAll());
+			TsscStory newStory = tsscStoryService.save(story, tsscGameService.findAll());
 			newStory.setDescription(newDesc);
-			TsscStory newStory2 = tsscStoryService.editStory(newStory);
+			TsscStory newStory2 = tsscStoryService.update(newStory);
 			assertEquals(newDesc, newStory2.getDescription());
 			assertTrue("The id of the modified story doesn't match with first old one", story.getId() == newStory2.getId());
 			assertTrue(false);
 		} catch (Exception e) {
-			System.out.println("Case 24: "+e);
 			assertTrue(true);
 		}
 	}

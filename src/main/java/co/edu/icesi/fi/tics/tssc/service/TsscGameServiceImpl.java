@@ -2,7 +2,6 @@ package co.edu.icesi.fi.tics.tssc.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class TsscGameServiceImpl implements TsscGameService {
 	private TsscGameDAO tsscGameDAO;
 
 	@Override
-	public TsscGame saveGame(TsscGame game, Iterable<TsscTopic> topics) {
+	public TsscGame save(TsscGame game, Iterable<TsscTopic> topics) {
 		if (game == null)
 			throw new NullPointerException("Neither the game or topic in the game is null");
 		TsscTopic topic = game.getTsscTopic();
@@ -46,7 +45,7 @@ public class TsscGameServiceImpl implements TsscGameService {
 	}
 	
 	@Override
-	public TsscGame saveGame2(TsscGame game, Iterable<TsscTopic> topics) {
+	public TsscGame save2(TsscGame game, Iterable<TsscTopic> topics) {
 		if (game == null || game.getTsscTopic() == null)
 			throw new NullPointerException("Neither the game or topic in the game is null");
 		TsscTopic topic = game.getTsscTopic();
@@ -66,7 +65,7 @@ public class TsscGameServiceImpl implements TsscGameService {
 		Gson gson = new Gson();
 		List<TsscStory> copyStories = new ArrayList<TsscStory>();
 		for (TsscStory tsscStory : topic.getTsscStories()) {
-			copyStories.add(gson.fromJson(gson.toJson(tsscStory), TsscStory.class));
+			copyStories.add(gson.fromJson(gson.toJson(tsscStory),TsscStory.class));
 		}
 		game.setTsscStories(copyStories);
 		//NO SE CUALES SEAN LOS CRONOGRMAS DEL TOPIC, BUSQUE BUSQUE Y NADA AL FIN....POR ESO SOLO HAGO COPIA A LAS STORIES
@@ -76,13 +75,13 @@ public class TsscGameServiceImpl implements TsscGameService {
 	}
 
 	@Override
-	public TsscGame editGame(TsscGame game) {
+	public TsscGame update(TsscGame game) {
 		if (game == null)
 			new NullPointerException("Can not edit the game because it's null the game to edit");
 		long springs = game.getNSprints(), groups = game.getNGroups();
 		if (springs < 1 || groups < 1)
 			new RuntimeException("There's an error in minimum number of Springs and/or Groups");
-		tsscGameDAO.save(game);
+		tsscGameDAO.update(game);
 		return tsscGameDAO.findById(game.getId());
 	}
 	

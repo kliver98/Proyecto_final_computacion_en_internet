@@ -7,11 +7,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import co.edu.icesi.fi.tics.tssc.model.TsscGame;
+import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 @Repository
 @Scope("singleton")
@@ -32,7 +34,7 @@ public class TsscGameDAO implements ITsscGameDAO {
 
 	@Override
 	public void update(TsscGame game) {
-		save(game);
+		entityManager.merge(game);
 	}
 
 	@Override
@@ -100,6 +102,31 @@ public class TsscGameDAO implements ITsscGameDAO {
 			}
 		}
 		return found;
+	}
+	
+	@Override
+	public List<TsscTopic[]> findTopicsByDate(LocalDate date) {
+		String q = "SELECT b.tsscTopic , count(b.tsscTopic) FROM TsscGame b "
+				+ "WHERE b.id IN (SELECT a.id from TsscGame a WHERE a.scheduledDate = :date) "
+				+ "GROUP BY b.tsscTopic ORDER BY MAX(b.scheduledTime)";
+		Query query = entityManager.createQuery(q);
+		query.setParameter("date", date);
+		@SuppressWarnings("unchecked")
+		List<TsscTopic[]> results = query.getResultList();
+
+		return results;
+	}
+	
+	@Override
+	public List<TsscGame> findByNoStoriesNoTimeControls(LocalDate date) {
+		String q = "SELECT a FROM TsscGame a WHERE a.scheduledDate ='"+date+"' AND (size(a.tsscStories)<10 "
+				+ "OR size(a.tsscTimecontrols) = 0)";
+		Query query = entityManager.createQuery(q);
+
+
+		@SuppressWarnings("unchecked")
+		List<TsscGame> results = query.getResultList();
+		return results;
 	}
 
 }

@@ -45,7 +45,7 @@ public class TsscTopicController {
 			if(bindingResult.hasErrors()) {
 				return "topic/add";
 			} else {
-				tsscTopicService.saveTopic(topic);
+				tsscTopicService.save(topic);
 			}
 		}
 		return "redirect:/topic/";	
@@ -67,7 +67,7 @@ public class TsscTopicController {
 			if (bindingResult.hasErrors()) {
 				return "/story/edit/";
 			} else {
-				tsscTopicService.editTopic(topic);
+				tsscTopicService.update(topic);
 			}
 		}
 		return "redirect:/topic/";

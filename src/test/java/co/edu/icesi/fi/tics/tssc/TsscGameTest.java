@@ -65,22 +65,21 @@ class TsscGameTest {
 
 	// Caso 7
 	@Test
-	void testSaveGameCase7() {
+	void testSave2Case7() {
 		setup();
-		topic.setId(1);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
-		TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+		TsscGame retrieved = tsscGameService.save(game, tsscTopicService.findAll());
 		assertEquals(game.getId(), retrieved.getId());
 	}
 
 	// Caso 8
 	@Test
-	void testSaveGameCase8() {
+	void testSave2Case8() {
 		setup();
 		try {
 			game.setTsscTopic(topic);
-			TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+			TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 			assertEquals(game.getId(), retrieved.getId());
 			assertTrue(false);
 		} catch (RuntimeException e) {
@@ -90,13 +89,13 @@ class TsscGameTest {
 
 	// Caso 9
 	@Test
-	void testSaveGameCase9() {
+	void testSave2Case9() {
 		setup();
 		game.setNSprints(cero);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		try {
 			game.setTsscTopic(topic);
-			TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+			TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 			assertEquals(game.getId(), retrieved.getId());
 			assertTrue(false);
 		} catch (Exception e) {
@@ -106,13 +105,13 @@ class TsscGameTest {
 
 	// Caso 10
 	@Test
-	void testSaveGameCase10() {
+	void testSave2Case10() {
 		setup();
 		game.setNGroups(cero);
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		try {
 			game.setTsscTopic(topic);
-			TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+			TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 			assertEquals(game.getId(), retrieved.getId());
 			assertTrue(false);
 		} catch (Exception e) {
@@ -121,13 +120,13 @@ class TsscGameTest {
 	}
 
 	@Test
-	void testSaveGame2() {
+	void testSave2() {
 		setup();
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
 		List<TsscStory> st1 = generateStories(5);
 		topic.setTsscStories(st1);
-		TsscGame retrieved = tsscGameService.saveGame2(game, tsscTopicService.findAll());
+		TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 		List<TsscStory> st2 = retrieved.getTsscStories();
 		for (int i = 0; i < st1.size(); i++) {
 			TsscStory s1 = st1.get(i);
@@ -139,37 +138,37 @@ class TsscGameTest {
 
 	// Caso 11
 	@Test
-	void testEditGameCase11() {
+	void testUpdateCase11() {
 		setup();
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
 		game.setNGroups(uno);
 		game.setNSprints(uno);
 		String oldName = "MyName#" + Math.random();
 		game.setName(oldName);
-		TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+		TsscGame retrieved = tsscGameService.save(game, tsscTopicService.findAll());
 		String newName = "NewName#" + Math.random();
 		retrieved.setName(newName);
-		TsscGame newRetrieved = tsscGameService.editGame(retrieved);
+		TsscGame newRetrieved = tsscGameService.update(retrieved);
 		assertFalse("The name wasn't change", oldName.equals(newRetrieved.getName()));
 		assertTrue("The new name its not ok", newName.equals(newRetrieved.getName()));
 	}
 
 	// Caso 12
 	@Test
-	void testEditGameCase12() {
+	void testUpdateCase12() {
 		setup();
-//		tsscTopicService.saveTopic(topic);
+//		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
 		game.setNGroups(uno);
 		game.setNSprints(uno);
 		String oldName = "MyName#" + Math.random();
 		game.setName(oldName);
 		try {			
-			TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+			TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 			String newName = "NewName#" + Math.random();
 			retrieved.setName(newName);
-			TsscGame newRetrieved = tsscGameService.editGame(retrieved);
+			TsscGame newRetrieved = tsscGameService.update(retrieved);
 			assertFalse("The name wasn't change", oldName.equals(newRetrieved.getName()));
 			assertTrue("The new name its not ok", newName.equals(newRetrieved.getName()));
 			assertTrue(false);
@@ -180,19 +179,19 @@ class TsscGameTest {
 
 	// Caso 13
 	@Test
-	void testEditGameCase13() {
+	void testUpdateCase13() {
 		setup();
-		tsscTopicService.saveTopic(topic);
+		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
 		game.setNGroups(uno);
 		game.setNSprints(cero);
 		String oldName = "MyName#" + Math.random();
 		game.setName(oldName);
 		try {			
-			TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+			TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 			String newName = "NewName#" + Math.random();
 			retrieved.setName(newName);
-			TsscGame newRetrieved = tsscGameService.editGame(retrieved);
+			TsscGame newRetrieved = tsscGameService.update(retrieved);
 			assertFalse("The name wasn't change", oldName.equals(newRetrieved.getName()));
 			assertTrue("The new name its not ok", newName.equals(newRetrieved.getName()));
 			assertTrue(false);
@@ -203,19 +202,19 @@ class TsscGameTest {
 
 	// Caso 14
 	@Test
-	void testEditGameCase14() {
+	void testUpdateCase14() {
 		setup();
-//		tsscTopicService.saveTopic(topic);
+//		tsscTopicService.save(topic);
 		game.setTsscTopic(topic);
 		game.setNGroups(cero);
 		game.setNSprints(uno);
 		String oldName = "MyName#" + Math.random();
 		game.setName(oldName);
 		try {			
-			TsscGame retrieved = tsscGameService.saveGame(game, tsscTopicService.findAll());
+			TsscGame retrieved = tsscGameService.save2(game, tsscTopicService.findAll());
 			String newName = "NewName#" + Math.random();
 			retrieved.setName(newName);
-			TsscGame newRetrieved = tsscGameService.editGame(retrieved);
+			TsscGame newRetrieved = tsscGameService.update(retrieved);
 			assertFalse("The name wasn't change", oldName.equals(newRetrieved.getName()));
 			assertTrue("The new name its not ok", newName.equals(newRetrieved.getName()));
 			assertTrue(false);

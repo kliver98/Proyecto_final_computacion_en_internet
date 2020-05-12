@@ -221,24 +221,21 @@ public class TsscStory implements Serializable {
 		this.tsscState = tsscState;
 	}
 
-	/**
-	 * @Override public Object clone() throws CloneNotSupportedException { TsscStory
-	 *           cloned = (TsscStory) super.clone();
-	 *           cloned.setAltDescripton(cloned.getAltDescripton());
-	 *           cloned.setAltDescShown(cloned.getAltDescShown());
-	 *           cloned.setDescription(cloned.getDescription());
-	 *           cloned.setShortDescription(cloned.getShortDescription()); // the
-	 *           above is applicable in case of primitive member types like String
-	 *           // however, in case of non primitive types
-	 *           cloned.setBusinessValue(new
-	 *           BigDecimal(cloned.getBusinessValue().toString()));
-	 *           cloned.setId(cloned.getId()); cloned.setInitialSprint(new
-	 *           BigDecimal(cloned.getInitialSprint().toString()));
-	 *           cloned.setNumber(new
-	 *           BigDecimal(cloned.getNumber().toBigInteger()));
-	 *           cloned.setPriority(new
-	 *           BigDecimal(cloned.getPriority().toString())); cloned.setTsscGame();
-	 *           return cloned; }
-	 **/
+	/*@Override 
+	public Object clone() throws CloneNotSupportedException { TsscStory
+		cloned = (TsscStory) super.clone();
+	    cloned.setAltDescripton(new String(cloned.getAltDescripton()));
+	    cloned.setAltDescShown(new String(cloned.getAltDescShown()));
+	    cloned.setDescription(new String(cloned.getDescription()));
+	    cloned.setShortDescription(new String(cloned.getShortDescription())); // the
+	    //above is applicable in case of primitive member types like String
+	    // however, in case of non primitive types
+	    cloned.setBusinessValue(new BigDecimal(cloned.getBusinessValue().toString()));
+	    cloned.setId(cloned.getId());
+	    cloned.setInitialSprint(new BigDecimal(cloned.getInitialSprint().toString()));
+	    cloned.setNumber(new BigDecimal(cloned.getNumber().toBigInteger()));
+	    cloned.setPriority(new BigDecimal(cloned.getPriority().toString()));
+	    return cloned;
+	}*/
 
 }

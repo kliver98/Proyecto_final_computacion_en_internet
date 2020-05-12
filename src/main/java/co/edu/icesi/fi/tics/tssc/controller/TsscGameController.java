@@ -62,7 +62,7 @@ public class TsscGameController {
 				String[] data = sDate.split("-");
 				LocalDate date = LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
 				game.setScheduledDate(date);
-				tsscGameService.saveGame(game,tsscTopicService.findAll());
+				tsscGameService.save(game,tsscTopicService.findAll());
 			}
 		}
 		return "redirect:/game/";
@@ -89,7 +89,7 @@ public class TsscGameController {
 				game.setStartTime(g.getStartTime());
 				game.setScheduledDate(g.getScheduledDate());
 				game.setScheduledTime(g.getScheduledTime());
-				tsscGameService.editGame(game);
+				tsscGameService.update(game);
 			}
 		}
 		return "redirect:/game/";
