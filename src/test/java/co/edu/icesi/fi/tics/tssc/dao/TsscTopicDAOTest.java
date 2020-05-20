@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -64,7 +63,7 @@ public class TsscTopicDAOTest {
 		tsscTopicDAO.save(tsscTopic1);
 		List<TsscTopic> topics = tsscTopicDAO.findAll();
 		int size = topics.size();
-		tsscTopicDAO.delete(topics.get(0));
+		tsscTopicDAO.delete(tsscTopic1);
 		assertEquals(size-1,tsscTopicDAO.findAll().size());
 	}
 	

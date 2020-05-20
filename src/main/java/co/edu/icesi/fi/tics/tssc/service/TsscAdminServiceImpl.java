@@ -1,5 +1,7 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +40,11 @@ public class TsscAdminServiceImpl implements TsscAdminService {
 	@Override
 	public AdminType[] getTypes() {
 		return AdminType.values();
+	}
+
+	@Override
+	public List<TsscAdmin> findByUser(String username) {
+		return tsscAdminDAO.findByUser(username);
 	}
 
 }
