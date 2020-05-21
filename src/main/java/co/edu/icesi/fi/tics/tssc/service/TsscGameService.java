@@ -15,6 +15,6 @@ public interface TsscGameService {
 	
 	Iterable<TsscGame> findAll();
 	
-	void delete(TsscGame game);
+	TsscGame delete(TsscGame game);
 	
 }

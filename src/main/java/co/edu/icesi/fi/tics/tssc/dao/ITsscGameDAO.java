@@ -13,7 +13,7 @@ public interface ITsscGameDAO {
 	
 	void update(TsscGame game);
 	
-	void delete(TsscGame game);
+	TsscGame delete(TsscGame game);
 	
 	List<TsscGame> findAll();
 	

@@ -61,8 +61,8 @@ public class TsscStoryServiceImpl implements TsscStoryService {
 	}
 
 	@Override
-	public void delete(TsscStory story) {
-		tsscStoryDAO.delete(story);
+	public TsscStory delete(TsscStory story) {
+		return tsscStoryDAO.delete(story);
 	}
 	
 }

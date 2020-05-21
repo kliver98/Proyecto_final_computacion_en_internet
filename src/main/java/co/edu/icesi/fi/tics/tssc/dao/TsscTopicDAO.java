@@ -39,8 +39,9 @@ public class TsscTopicDAO implements ITsscTopicDAO {
 	}
 
 	@Override
-	public void delete(TsscTopic topic) {
+	public TsscTopic delete(TsscTopic topic) {
 		entityManager.remove(topic);
+		return topic;
 	}
 
 	@Override

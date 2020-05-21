@@ -46,8 +46,8 @@ public class TsscTopicServiceImpl implements TsscTopicService {
 	}
 	
 	@Override
-	public void delete(TsscTopic topic) {
-		tsscTopicDAO.delete(topic);
+	public TsscTopic delete(TsscTopic topic) {
+		return tsscTopicDAO.delete(topic);
 	}
 	
 }

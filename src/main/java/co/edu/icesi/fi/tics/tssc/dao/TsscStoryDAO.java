@@ -39,8 +39,9 @@ public class TsscStoryDAO implements ITsscStoryDAO {
 	}
 
 	@Override
-	public void delete(TsscStory story) {
+	public TsscStory delete(TsscStory story) {
 		entityManager.remove(story);
+		return story;
 	}
 
 }

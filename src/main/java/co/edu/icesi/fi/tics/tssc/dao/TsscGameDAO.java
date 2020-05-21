@@ -44,8 +44,9 @@ public class TsscGameDAO implements ITsscGameDAO {
 	}
 
 	@Override
-	public void delete(TsscGame game) {
+	public TsscGame delete(TsscGame game) {
 		entityManager.remove(game);
+		return game;
 	}
 
 	@Override

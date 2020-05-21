@@ -10,7 +10,7 @@ public interface ITsscTopicDAO {
 	
 	void update(TsscTopic topic);
 	
-	void delete(TsscTopic topic);
+	TsscTopic delete(TsscTopic topic);
 	
 	List<TsscTopic> findAll();
 	

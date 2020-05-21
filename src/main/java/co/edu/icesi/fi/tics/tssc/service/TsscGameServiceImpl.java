@@ -95,8 +95,8 @@ public class TsscGameServiceImpl implements TsscGameService {
 		return tsscGameDAO.findById(id);
 	}
 
-	public void delete(TsscGame game) {
-		tsscGameDAO.delete(game);
+	public TsscGame delete(TsscGame game) {
+		return tsscGameDAO.delete(game);
 	}
 	
 }

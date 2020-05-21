@@ -12,6 +12,6 @@ public interface TsscStoryService {
 	
 	TsscStory findById(long id);
 	
-	void delete(TsscStory story);
+	TsscStory delete(TsscStory story);
 	
 }

@@ -10,7 +10,7 @@ public interface ITsscStoryDAO {
 	
 	void update(TsscStory story);
 	
-	void delete(TsscStory story);
+	TsscStory delete(TsscStory story);
 	
 	List<TsscStory> findAll();
 	
