@@ -12,6 +12,6 @@ public interface TsscGameDelegate {
 	
 	TsscGame updateTsscGame(TsscGame game);
 	
-	TsscGame deleteTsscGame(long id);
+	void deleteTsscGame(long id);
 	
 }

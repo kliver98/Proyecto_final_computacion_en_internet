@@ -12,6 +12,6 @@ public interface TsscTopicDelegate {
 	
 	TsscTopic updateTsscTopic(TsscTopic topic);
 
-	TsscTopic deleteTsscTopic(long id);
+	void deleteTsscTopic(long id);
 	
 }

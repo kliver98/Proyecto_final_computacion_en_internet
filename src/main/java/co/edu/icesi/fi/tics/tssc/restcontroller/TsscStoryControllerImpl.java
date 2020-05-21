@@ -23,39 +23,39 @@ public class TsscStoryControllerImpl implements TsscStoryController {
 	@Autowired
 	private TsscGameService tsscGameService;
 	
-	@GetMapping("/stories")
+	@GetMapping("/api/stories")
 	public Iterable<TsscStory> getAll() {
 		return tsscStoryService.findAll();
 	}
 	
-	@GetMapping("/stories/{id}")
+	@GetMapping("/api/stories/{id}")
 	public TsscStory findById(@PathVariable long id) {
 		return tsscStoryService.findById(id);
 	}
 	
-	@PostMapping("/stories")
+	@PostMapping("/api/stories")
 	public TsscStory saveTsscStory(@RequestBody TsscStory story) {
 		return tsscStoryService.save(story, tsscGameService.findAll());
 	}
 	
-	@PostMapping("/stories/update/story")
+	@PostMapping("/api/stories/update/story")
 	public TsscStory updateTsscStory(@RequestBody TsscStory story) {
 		return tsscStoryService.update(story);
 	}
 	
-	@GetMapping("/stories/delete/{id}")
+	@GetMapping("/api/stories/delete/{id}")
 	public TsscStory deleteTsscStory(@PathVariable long id) {
 		return tsscStoryService.delete(tsscStoryService.findById(id));
 	}
 	
-	@GetMapping("/storiestb")
+	@GetMapping("/api/storiestb")
 	public TransactionBody<Iterable<TsscStory>> getAllTb() {
 		TransactionBody<Iterable<TsscStory>> tb = new TransactionBody<Iterable<TsscStory>>();
 		tb.setBody(tsscStoryService.findAll());
 		return tb;
 	}
 
-	@GetMapping("/storiestb/{id}")
+	@GetMapping("/api/storiestb/{id}")
 	public ResponseEntity<TransactionBody<TsscStory>> findByIdTb(@PathVariable long id) {
 		TsscStory story = tsscStoryService.findById(id);
 		TransactionBody<TsscStory> transaction = new TransactionBody<TsscStory>("NewTsscStory", story);
@@ -64,7 +64,7 @@ public class TsscStoryControllerImpl implements TsscStoryController {
 		return response;
 	}
 
-	@PostMapping("/storiestb")
+	@PostMapping("/api/storiestb")
 	public ResponseEntity<TransactionBody<TsscStory>> saveTsscStoryTb(@RequestBody TransactionBody<TsscStory> story) {
 		TsscStory newstory = story.getBody();
 		tsscStoryService.save(newstory,tsscGameService.findAll());
@@ -74,7 +74,7 @@ public class TsscStoryControllerImpl implements TsscStoryController {
 		return response;
 	}
 
-	@PostMapping("/storiestb/update")
+	@PostMapping("/api/storiestb/update")
 	public ResponseEntity<TransactionBody<TsscStory>> updateTsscStoryTb(@RequestBody TransactionBody<TsscStory> story) {
 		TsscStory newstory = story.getBody();
 		tsscStoryService.update(newstory);
@@ -84,7 +84,7 @@ public class TsscStoryControllerImpl implements TsscStoryController {
 		return response;
 	}
 
-	@DeleteMapping("/storiestb/{id}")
+	@DeleteMapping("/api/storiestb/{id}")
 	public ResponseEntity<TransactionBody<TsscStory>> deleteTsscStoryTb(@PathVariable long id) {
 		TsscStory story = tsscStoryService.findById(id);
 		if (story==null)
