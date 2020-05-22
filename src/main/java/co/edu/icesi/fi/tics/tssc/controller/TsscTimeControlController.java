@@ -72,7 +72,7 @@ public class TsscTimeControlController {
 					tsscTimeControlService.update(tsscTimecontrol);
 				}
 			}
-			return "redirect:/timeControl";
+			return "redirect:/timeControl/";
 			
 	}
 	
@@ -83,7 +83,7 @@ public class TsscTimeControlController {
 			throw new IllegalArgumentException("Invalid timeControl Id:" + id);
 		}
 		tsscTimeControlService.delete(tsscTimecontrol);
-		return "redirect:/timeControl";
+		return "redirect:/timeControl/";
 	}
 	
 	
