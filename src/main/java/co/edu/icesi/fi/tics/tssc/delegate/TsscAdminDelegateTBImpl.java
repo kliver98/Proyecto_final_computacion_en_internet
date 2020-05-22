@@ -17,7 +17,7 @@ import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
 public class TsscAdminDelegateTBImpl implements TsscAdminDelegateTB {
 
 	private RestTemplate restTemplate;
-	final String SERVER = "http://localhost:8080/";
+	final String SERVER = "http://localhost:8080/api/";
 	
 	public TsscAdminDelegateTBImpl() {
 		this.restTemplate = new RestTemplate();

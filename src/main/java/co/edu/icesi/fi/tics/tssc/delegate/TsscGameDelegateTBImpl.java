@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 public class TsscGameDelegateTBImpl {
 
 	private RestTemplate restTemplate;
-	final String SERVER = "http://localhost:8080/";
+	final String SERVER = "http://localhost:8080/api/";
 	
 	public TsscGameDelegateTBImpl() {
 		restTemplate = new RestTemplate();

@@ -20,39 +20,39 @@ public class TsscTopicControllerImpl implements TsscTopicController {
 	@Autowired
 	private TsscTopicService tsscTopicService;
 
-	@GetMapping("/topics")
+	@GetMapping("/api/topics")
 	public Iterable<TsscTopic> getAll() {
 		return tsscTopicService.findAll();
 	}
 
-	@GetMapping("/topics/{id}")
+	@GetMapping("/api/topics/{id}")
 	public TsscTopic findById(@PathVariable long id) {
 		return tsscTopicService.findById(id);
 	}
 
-	@PostMapping("/topics")
+	@PostMapping("/api/topics")
 	public TsscTopic saveTsscTopic(@RequestBody TsscTopic topic) {
 		return tsscTopicService.save(topic);
 	}
 
-	@PostMapping("/topics/update")
+	@PostMapping("/api/topics/update")
 	public TsscTopic updateTsscTopic(@RequestBody TsscTopic topic) {
 		return tsscTopicService.update(topic);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/api/delete/{id}")
 	public TsscTopic deleteTsscTopic(@PathVariable long id) {
 		return tsscTopicService.delete(tsscTopicService.findById(id));
 	}
 
-	@GetMapping("/topicstb")
+	@GetMapping("/api/topicstb")
 	public TransactionBody<Iterable<TsscTopic>> getAllTb() {
 		TransactionBody<Iterable<TsscTopic>> tb = new TransactionBody<Iterable<TsscTopic>>();
 		tb.setBody(tsscTopicService.findAll());
 		return tb;
 	}
 
-	@GetMapping("/topicstb/{id}")
+	@GetMapping("/api/topicstb/{id}")
 	public ResponseEntity<TransactionBody<TsscTopic>> findByIdTb(@PathVariable long id) {
 		TsscTopic topic = tsscTopicService.findById(id);
 		TransactionBody<TsscTopic> transaction = new TransactionBody<TsscTopic>("NewTsscTopic", topic);
@@ -61,7 +61,7 @@ public class TsscTopicControllerImpl implements TsscTopicController {
 		return response;
 	}
 
-	@PostMapping("/topicstb")
+	@PostMapping("/api/topicstb")
 	public ResponseEntity<TransactionBody<TsscTopic>> saveTsscTopicTb(@RequestBody TransactionBody<TsscTopic> topic) {
 		TsscTopic NewTsscTopic = topic.getBody();
 		tsscTopicService.save(NewTsscTopic);
@@ -71,7 +71,7 @@ public class TsscTopicControllerImpl implements TsscTopicController {
 		return response;
 	}
 
-	@PostMapping("/topicstb/update")
+	@PostMapping("/api/topicstb/update")
 	public ResponseEntity<TransactionBody<TsscTopic>> updateTsscTopicTb(@RequestBody TransactionBody<TsscTopic> topic) {
 		TsscTopic NewTsscTopic = topic.getBody();
 		tsscTopicService.update(NewTsscTopic);
@@ -81,7 +81,7 @@ public class TsscTopicControllerImpl implements TsscTopicController {
 		return response;
 	}
 
-	@DeleteMapping("/topicstb/{id}")
+	@DeleteMapping("/api/topicstb/{id}")
 	public ResponseEntity<TransactionBody<TsscTopic>> deleteTsscTopicTb(@PathVariable long id) {
 		TsscTopic topic = tsscTopicService.findById(id);
 		if (topic==null)

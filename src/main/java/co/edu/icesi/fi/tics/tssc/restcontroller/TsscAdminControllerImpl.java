@@ -19,24 +19,24 @@ public class TsscAdminControllerImpl implements TsscAdminController {
 	@Autowired
 	private TsscAdminServiceImpl tsscAdminService;
 
-	@GetMapping("/admins")
+	@GetMapping("/api/admins")
 	public List<TsscAdmin> getAdmins() {
 		return (List<TsscAdmin>) tsscAdminService.findAll();
 	}
 
-	@GetMapping("/admins/{username}")
+	@GetMapping("/api/admins/{username}")
 	public List<TsscAdmin> getByUsername(@PathVariable String username) {
 		return tsscAdminService.findByUser(username);
 	}
 
-	@GetMapping("/adminstb")
+	@GetMapping("/api/adminstb")
 	public TransactionBody<Iterable<TsscAdmin>> getAdminsTb() {
 		TransactionBody<Iterable<TsscAdmin>> tb = new TransactionBody<Iterable<TsscAdmin>>();
 		tb.setBody(tsscAdminService.findAll());
 		return tb;
 	}
 
-	@GetMapping("/adminstb/{username}")
+	@GetMapping("/api/adminstb/{username}")
 	public ResponseEntity<TransactionBody<List<TsscAdmin>>> getByUsernameTb(@PathVariable String username) {
 		List<TsscAdmin> admins = tsscAdminService.findByUser(username);
 		TransactionBody<List<TsscAdmin>> transaction = new TransactionBody<List<TsscAdmin>>("TsscAdminTB_ByUsername", admins);

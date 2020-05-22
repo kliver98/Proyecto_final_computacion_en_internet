@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 public class TsscStoryDelegateTBImpl {
 
 	private RestTemplate restTemplate;
-	final String SERVER = "http://localhost:8080/";
+	final String SERVER = "http://localhost:8080/api/";
 	
 	public TsscStoryDelegateTBImpl() {
 		this.restTemplate = new RestTemplate();

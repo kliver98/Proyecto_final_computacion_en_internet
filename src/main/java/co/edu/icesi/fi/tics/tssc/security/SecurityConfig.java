@@ -39,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 
 		httpSecurity
+		.authorizeRequests().antMatchers("/api/**").permitAll()
+		.and()
 		.authorizeRequests().antMatchers("/topic/add/**").hasRole(AdminType.superAdmin.toString())
 			/*.antMatchers("/apps/**")
 			.hasAnyRole("superAdmin","admin")*/.anyRequest().authenticated()

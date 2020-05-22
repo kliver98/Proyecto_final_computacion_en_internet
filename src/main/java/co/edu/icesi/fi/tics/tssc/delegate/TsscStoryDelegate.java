@@ -12,6 +12,6 @@ public interface TsscStoryDelegate {
 	
 	TsscStory updateTsscStory(TsscStory story);
 
-	TsscStory deleteTsscStory(long id);
+	void deleteTsscStory(long id);
 	
 }

@@ -23,39 +23,39 @@ public class TsscGameControllerImpl implements TsscGameController {
 	@Autowired
 	private TsscTopicService tsscTopicService;
 
-	@GetMapping("/games")
+	@GetMapping("/api/games")
 	public Iterable<TsscGame> getAll() {
 		return tsscGameService.findAll();
 	}
 
-	@GetMapping("/games/{id}")
+	@GetMapping("/api/games/{id}")
 	public TsscGame findById(@PathVariable long id) {
 		return tsscGameService.findById(id);
 	}
 
-	@PostMapping("/games")
+	@PostMapping("/api/games")
 	public TsscGame saveTsscGame(@RequestBody TsscGame game) {
 		return tsscGameService.save(game, tsscTopicService.findAll());
 	}
 
-	@GetMapping("/games/update/{game}")
+	@GetMapping("/api/games/update/{game}")
 	public TsscGame updateTsscGame(@RequestBody TsscGame game) {
 		return tsscGameService.update(game);
 	}
 
-	@GetMapping("/games/delete/{id}")
+	@GetMapping("/api/games/delete/{id}")
 	public TsscGame deleteTsscGame(@PathVariable long id) {
 		return tsscGameService.delete(tsscGameService.findById(id));
 	}
 
-	@GetMapping("/gamestb")
+	@GetMapping("/api/gamestb")
 	public TransactionBody<Iterable<TsscGame>> getAllTb() {
 		TransactionBody<Iterable<TsscGame>> tb = new TransactionBody<Iterable<TsscGame>>();
 		tb.setBody(tsscGameService.findAll());
 		return tb;
 	}
 
-	@GetMapping("/gamestb/{id}")
+	@GetMapping("/api/gamestb/{id}")
 	public ResponseEntity<TransactionBody<TsscGame>> findByIdTb(@PathVariable long id) {
 		TsscGame story = tsscGameService.findById(id);
 		TransactionBody<TsscGame> transaction = new TransactionBody<TsscGame>("NewTsscGame", story);
@@ -64,7 +64,7 @@ public class TsscGameControllerImpl implements TsscGameController {
 		return response;
 	}
 
-	@PostMapping("/gamestb")
+	@PostMapping("/api/gamestb")
 	public ResponseEntity<TransactionBody<TsscGame>> saveTsscGameTb(@RequestBody TransactionBody<TsscGame> story) {
 		TsscGame newstory = story.getBody();
 		tsscGameService.save(newstory,tsscTopicService.findAll());
@@ -74,7 +74,7 @@ public class TsscGameControllerImpl implements TsscGameController {
 		return response;
 	}
 
-	@PostMapping("/gamestb/update")
+	@PostMapping("/api/gamestb/update")
 	public ResponseEntity<TransactionBody<TsscGame>> updateTsscGameTb(@RequestBody TransactionBody<TsscGame> story) {
 		TsscGame newstory = story.getBody();
 		tsscGameService.update(newstory);
@@ -84,7 +84,7 @@ public class TsscGameControllerImpl implements TsscGameController {
 		return response;
 	}
 
-	@DeleteMapping("/gamestb/{id}")
+	@DeleteMapping("/api/gamestb/{id}")
 	public ResponseEntity<TransactionBody<TsscGame>> deleteTsscGameTb(@PathVariable long id) {
 		TsscGame story = tsscGameService.findById(id);
 		if (story==null)
