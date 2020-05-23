@@ -22,6 +22,15 @@
 				<h2 th:if="${topics.size()==0}" class="text-danger">No existen temas!</h2><br>
 				<div th:if="${topics.size()!=0}">
 					<h2 class="my-5">Gestión de temas de juegos <i class="fa fa-bookmark ml-2"></i></h2>
+					
+					<p>Buscar temas por fecha</p>
+					<form class="form-inline">
+					  <div class="form-group mx-sm-3 mb-2">
+					
+					    <input type="date" class="form-control" id="fecha" placeholder="Fecha">
+					  </div>
+					  <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+					</form>
 					<table class="table table-striped table-responsive-md">
 						<thead>
 							<tr>
@@ -49,6 +58,8 @@
 							</tr>
 						</tbody>
 					</table>
+
+				
 				</div>
 				<p class="my-5" sec:authorize="hasRole('superAdmin')">
 					<a href="/topic/add" class="btn btn-primary">Adicionar <i

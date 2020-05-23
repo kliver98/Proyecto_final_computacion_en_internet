@@ -1,5 +1,8 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import co.edu.icesi.fi.tics.tssc.model.TsscGame;
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
@@ -16,5 +19,8 @@ public interface TsscGameService {
 	Iterable<TsscGame> findAll();
 	
 	TsscGame delete(TsscGame game);
+	
+	
+	List<TsscTopic[]> findTopicByDate(LocalDate localDate);
 	
 }

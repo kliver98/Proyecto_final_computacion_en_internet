@@ -1,5 +1,6 @@
 package co.edu.icesi.fi.tics.tssc.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -55,5 +56,6 @@ public class TsscTopicDAO implements ITsscTopicDAO {
 		String q = "SELECT a FROM TsscTopic a WHERE a.description = '"+description+"'";
 		return entityManager.createQuery(q, TsscTopic.class).getResultList();
 	}
+
 
 }
