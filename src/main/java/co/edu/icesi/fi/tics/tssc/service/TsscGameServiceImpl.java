@@ -104,6 +104,12 @@ public class TsscGameServiceImpl implements TsscGameService {
 	public List<TsscTopic[]> findTopicByDate(LocalDate localDate) {
 		return tsscGameDAO.findTopicsByDate(localDate);
 	}
+
+	@Override
+	public List<TsscGame> findByDateRange(LocalDate initial, LocalDate end) {
+		
+		return tsscGameDAO.findByDateRange(initial, end);
+	}
 	
 	
 	

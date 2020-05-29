@@ -20,6 +20,7 @@ public interface TsscGameService {
 	
 	TsscGame delete(TsscGame game);
 	
+	List<TsscGame> findByDateRange(LocalDate initial, LocalDate end);
 	
 	List<TsscTopic[]> findTopicByDate(LocalDate localDate);
 	
