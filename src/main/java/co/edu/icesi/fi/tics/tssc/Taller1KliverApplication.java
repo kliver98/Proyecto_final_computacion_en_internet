@@ -14,10 +14,12 @@ import co.edu.icesi.fi.tics.tssc.model.AdminType;
 import co.edu.icesi.fi.tics.tssc.model.TsscAdmin;
 import co.edu.icesi.fi.tics.tssc.model.TsscGame;
 import co.edu.icesi.fi.tics.tssc.model.TsscStory;
+import co.edu.icesi.fi.tics.tssc.model.TsscTimecontrol;
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 import co.edu.icesi.fi.tics.tssc.service.TsscAdminServiceImpl;
 import co.edu.icesi.fi.tics.tssc.service.TsscGameServiceImpl;
 import co.edu.icesi.fi.tics.tssc.service.TsscStoryServiceImpl;
+import co.edu.icesi.fi.tics.tssc.service.TsscTimeControlServiceImpl;
 import co.edu.icesi.fi.tics.tssc.service.TsscTopicServiceImpl;
 
 @SpringBootApplication
@@ -82,6 +84,17 @@ public class Taller1KliverApplication {
 		st.setShortDescription("Short desc");
 		st.setTsscGame(g);
 		sImpl.save(st, gImpl.findAll());
+		
+		TsscTimeControlServiceImpl cImpl = c.getBean(TsscTimeControlServiceImpl.class);
+		TsscTimecontrol tc = new TsscTimecontrol();
+		tc.setName("TimeControl 1");
+		tc.setAutostart("AutoStart");
+		tc.setLastPlayTime(LocalTime.now());
+		tc.setOrder(new BigDecimal(3));
+		tc.setState("State");
+		tc.setTimeInterval(new BigDecimal(5));
+		tc.setType("Type");
+		cImpl.save(tc);
 	}
 
 }

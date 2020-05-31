@@ -22,6 +22,10 @@
 				<h2 th:if="${games.size()==0}" class="text-danger">No existen juegos!</h2><br>
 				<div th:if="${games.size()!=0}">
 					<h2 class="my-5">Gestión de juegos <i class="fa fa-gamepad ml-2"></i></h2>
+					<p>Buscar temas por rango de fechas</p>
+					
+						<a href="/game/filterinput" class="btn btn-primary">Buscar</a>
+
 					<table class="table table-striped table-responsive-md">
 						<thead>
 							<tr>

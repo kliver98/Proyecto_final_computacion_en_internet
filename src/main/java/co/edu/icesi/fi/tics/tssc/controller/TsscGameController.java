@@ -3,6 +3,8 @@ package co.edu.icesi.fi.tics.tssc.controller;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.convert.JodaTimeConverters.DateTimeToDateConverter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 import co.edu.icesi.fi.tics.tssc.model.TsscGame;
 import co.edu.icesi.fi.tics.tssc.service.TsscGameService;
@@ -35,6 +39,26 @@ public class TsscGameController {
 		model.addAttribute("games", tsscGameService.findAll());
 		return "game/index";
 	}
+	
+	//---------------------------------------------------------
+	
+	@GetMapping("/game/filterinput")
+	public String filterGamePage() {
+		return "game/gameFilter";
+	}
+	
+	@PostMapping("/game/gameList")
+	public String listGamesFiltered(@RequestParam("initialDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate initialDate, @RequestParam("finishDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate finishDate, Model model) {
+		Iterable<TsscGame> filter = tsscGameService.findByDateRange(initialDate, finishDate);
+		model.addAttribute("games", filter);
+		return "game/gamesFiltered";
+	}
+	
+	
+	//---------------------------------------------------------
+	
+
+	
 
 	@GetMapping("/game/add/")
 	public String add(Model model) {

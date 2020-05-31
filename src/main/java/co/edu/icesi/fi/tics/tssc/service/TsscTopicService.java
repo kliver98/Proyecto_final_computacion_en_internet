@@ -1,5 +1,9 @@
 package co.edu.icesi.fi.tics.tssc.service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
 
 public interface TsscTopicService {
@@ -13,5 +17,7 @@ public interface TsscTopicService {
 	TsscTopic findById(long id);
 	
 	TsscTopic delete(TsscTopic topic);
+
+	
 	
 }
