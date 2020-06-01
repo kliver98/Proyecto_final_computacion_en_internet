@@ -106,15 +106,15 @@ public class TsscGameDAO implements ITsscGameDAO {
 	}
 	
 	@Override
-	public List<TsscTopic[]> findTopicsByDate(LocalDate date) {
-		String q = "SELECT b.tsscTopic , count(b.tsscTopic) FROM TsscGame b "
+	public List<TsscTopic> findTopicsByDate(LocalDate date) {
+		String q = "SELECT b.tsscTopic FROM TsscGame b "
 				+ "WHERE b.id IN (SELECT a.id from TsscGame a WHERE a.scheduledDate = :date) "
 				+ "GROUP BY b.tsscTopic ORDER BY MAX(b.scheduledTime)";
-		Query query = entityManager.createQuery(q);
+		Query query = entityManager.createQuery(q, TsscTopic.class);
 		query.setParameter("date", date);
 		@SuppressWarnings("unchecked")
-		List<TsscTopic[]> results = query.getResultList();
-
+		List<TsscTopic> results = query.getResultList();
+		
 		return results;
 	}
 	

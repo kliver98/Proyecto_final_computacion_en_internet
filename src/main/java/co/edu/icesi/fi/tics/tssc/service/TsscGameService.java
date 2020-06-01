@@ -22,6 +22,6 @@ public interface TsscGameService {
 	
 	List<TsscGame> findByDateRange(LocalDate initial, LocalDate end);
 	
-	List<TsscTopic[]> findTopicByDate(LocalDate localDate);
+	List<TsscTopic> findTopicByDate(LocalDate localDate);
 	
 }

@@ -45,7 +45,7 @@ public class TsscGameDAOTest {
 		g1.setTsscTopic(t1);
 		g1.setName("Game 1");
 		g2 = new TsscGame(); 
-		g2.setTsscTopic(t1);
+		g2.setTsscTopic(t2);
 		g2.setName("Game 2");
 		g1.setScheduledDate(d1);
 		g1.setScheduledTime(LocalTime.of(10, 20));
@@ -106,7 +106,7 @@ public class TsscGameDAOTest {
 	@Test
 	@Transactional(readOnly=false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void testFindTopicsByDate() {
-		List<TsscTopic[]> result = tsscGameDAO.findTopicsByDate(LocalDate.of(2020, 10, 20));
+		List<TsscTopic> result = tsscGameDAO.findTopicsByDate(LocalDate.of(2020, 10, 20));//12-3;10-20
 		assertEquals(1,result.size());
 	}
 	

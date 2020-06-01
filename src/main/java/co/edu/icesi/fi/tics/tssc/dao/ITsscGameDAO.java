@@ -29,7 +29,7 @@ public interface ITsscGameDAO {
 	
 	List<TsscGame> findByDateAndTimeRange(LocalDate date, LocalTime initialTime, LocalTime endTime);
 	
-	List<TsscTopic[]> findTopicsByDate(LocalDate date);
+	List<TsscTopic> findTopicsByDate(LocalDate date);
 	
 	List<TsscGame> findByNoStoriesNoTimeControls(LocalDate date);
 	
