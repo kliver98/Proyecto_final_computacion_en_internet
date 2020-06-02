@@ -1,6 +1,5 @@
 package co.edu.icesi.fi.tics.tssc.dao;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
