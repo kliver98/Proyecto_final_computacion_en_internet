@@ -40,9 +40,8 @@ public class TsscGameController {
 		return "game/index";
 	}
 	
-	//---------------------------------------------------------
 	
-	@GetMapping("/game/filterinput")
+	@GetMapping("/game/searchGame")
 	public String filterGamePage() {
 		return "game/gameFilter";
 	}
@@ -54,12 +53,6 @@ public class TsscGameController {
 		return "game/gamesFiltered";
 	}
 	
-	
-	//---------------------------------------------------------
-	
-
-	
-
 	@GetMapping("/game/add/")
 	public String add(Model model) {
 		model.addAttribute("game", new TsscGame());

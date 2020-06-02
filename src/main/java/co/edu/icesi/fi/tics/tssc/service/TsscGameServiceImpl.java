@@ -110,6 +110,12 @@ public class TsscGameServiceImpl implements TsscGameService {
 		
 		return tsscGameDAO.findByDateRange(initial, end);
 	}
+
+	@Override
+	public List<TsscGame> findByDateRange2(LocalDate ld) {
+		
+		return tsscGameDAO.findByDateRange2(ld);
+	}
 	
 	
 	

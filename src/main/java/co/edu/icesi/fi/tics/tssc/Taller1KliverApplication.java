@@ -74,6 +74,10 @@ public class Taller1KliverApplication {
 		g.setStartTime(LocalTime.now());
 		g.setUserPassword("user");
 		gImpl.save(g,tImpl.findAll());
+		
+		
+		System.out.println(gImpl.findTopicByDate(LocalDate.of(2020, 06, 01)).size()+ "HOLAAAAAA ********");
+		
 		TsscStoryServiceImpl sImpl = c.getBean(TsscStoryServiceImpl.class);
 		TsscStory st = new TsscStory();
 		st.setDescription("My full description");

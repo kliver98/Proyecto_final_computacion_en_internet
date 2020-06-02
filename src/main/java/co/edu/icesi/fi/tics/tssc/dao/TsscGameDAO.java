@@ -91,6 +91,21 @@ public class TsscGameDAO implements ITsscGameDAO {
 		}
 		return found;
 	}
+	
+	
+	@Override
+	public List<TsscGame> findByDateRange2(LocalDate ld) {
+		List<TsscGame> found = new ArrayList<TsscGame>();
+		for (TsscGame game : findAll()) {
+			LocalDate date = game.getScheduledDate();
+			if (date!=null) {
+				if (date.compareTo(ld) ==1)
+					found.add(game);
+			}
+		}
+		return found;
+	}
+	
 
 	@Override
 	public List<TsscGame> findByDateAndTimeRange(LocalDate date, LocalTime initialTime, LocalTime endTime) {

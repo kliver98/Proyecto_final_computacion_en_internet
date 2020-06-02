@@ -1,6 +1,10 @@
 package co.edu.icesi.fi.tics.tssc.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,12 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.edu.icesi.fi.tics.tssc.model.TsscTopic;
+import co.edu.icesi.fi.tics.tssc.service.TsscGameService;
 import co.edu.icesi.fi.tics.tssc.service.TsscTopicService;
 
 @Controller
 public class TsscTopicController {
 
 	private TsscTopicService tsscTopicService;
+	@Autowired
+	private TsscGameService tsscGameService;
+
+	
 	
 	@Autowired
 	public TsscTopicController(TsscTopicService tsscTopicService) {
@@ -35,6 +44,20 @@ public class TsscTopicController {
 		model.addAttribute("topic", new TsscTopic());
 		return "topic/save";
 	}
+	
+	@GetMapping("/topic/searchTopic")
+	public String topicsByDate() {
+		
+		return "topic/topicFilter";
+	}
+	
+	@PostMapping("/topic/topicList")
+	public String topicsByDate(@RequestParam("date")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, Model model) {
+		List<TsscTopic> filter = tsscGameService.findTopicByDate(date);
+		model.addAttribute("topics",filter);
+		return "topic/topicFiltered";
+	}
+	
 	
 	@PostMapping("/topic/add")
 	public String saveUser1(@RequestParam(value = "action", required = true) String action, TsscTopic topic,

@@ -54,4 +54,6 @@ public class TsscGameDelegateImpl implements TsscGameDelegate {
 		restTemplate.delete(SERVER + "games/delete/"+id);
 	}
 	
+	
+	
 }
